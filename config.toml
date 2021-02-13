@@ -1,0 +1,51 @@
+baseURL = "https://hakaselogs.me/"
+languageCode = "en-us"
+title = "hakaselogs"
+theme = "ink"
+paginate = 10
+copyright = "© hakaselogs"
+pygmentsstyle = "vs"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
+googleAnalytics = "UA-90124514-1"
+
+[params]
+	subtitle = "Notes mostly about software engineering and what I'm working on."
+
+	# Optional 64x64 avatar image.
+  avatar = "https://storage.googleapis.com/gopherizeme.appspot.com/gophers/0f1736136b4fcbea61798f9d4d04a6b01f4a05ad.png"
+
+	# Content types to disable Disqus on.
+	disableDisqusTypes = ["page"]
+
+  favicon = "/image/favicon.png"
+	featherIconsCDN = true
+
+# Nav.
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[menu.main]]
+name = "Archive"
+url = "/posts"
+weight = 2
+
+[[menu.main]]
+name = "Tags"
+url = "/tags"
+weight = 3
+
+[[params.social]]
+name = "Twitter"
+icon = "twitter"
+url = "https://twitter.com/codehakase"
+
+[[params.social]]
+name = "Github"
+icon = "github"
+url = "https://github.com/codehakase"
+
+[taxonomies]
+   tag = "tags"

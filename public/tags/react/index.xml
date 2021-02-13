@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>react on hakaselogs</title>
+    <link>https://hakaselogs.me/tags/react/</link>
+    <description>Recent content in react on hakaselogs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© hakaselogs</copyright>
+    <lastBuildDate>Fri, 20 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://hakaselogs.me/tags/react/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Building a Web App With Go, Gin and React</title>
+      <link>https://hakaselogs.me/posts/2018-04-20-building-a-web-app-with-go-gin-and-react/</link>
+      <pubDate>Fri, 20 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://hakaselogs.me/posts/2018-04-20-building-a-web-app-with-go-gin-and-react/</guid>
+      <description>TL;DR: In this tutorial, I&amp;rsquo;ll show you how easy it is to build a web application with Go and the Gin framework and add authentication to it. Check out the Github repo for the code we&amp;rsquo;re going to write.
+ Gin is a high-performance micro-framework that delivers a very minimalistic framework that carries with it only the most essential features, libraries, and functionalities needed to build web applications and microservices. It makes it simple to build a request handling pipeline from modular, reusable pieces.</description>
+    </item>
+    
+    <item>
+      <title>[#D2/30] React30: Lifecycle Methods and Data Fetching</title>
+      <link>https://hakaselogs.me/posts/2017-09-12-learning-react-day-2/</link>
+      <pubDate>Tue, 12 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://hakaselogs.me/posts/2017-09-12-learning-react-day-2/</guid>
+      <description>In the previous article, I wrote on setting up React, and some other basic features like Components, Props, and States. In this article, we&amp;rsquo;re going to look at React&amp;rsquo;s Lifecycle Methods and how to use them.
+When creating components, the only required spec is the render method. Sometimes we may want to add code that gets called at certain times inside our component&amp;rsquo;s lifetime. The Lifecycle methods in React allows us write additional code for this.</description>
+    </item>
+    
+    <item>
+      <title>[#D1/30] React30: Getting Started, Basic Concepts</title>
+      <link>https://hakaselogs.me/posts/2017-09-11-learning-react-day-1/</link>
+      <pubDate>Mon, 11 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://hakaselogs.me/posts/2017-09-11-learning-react-day-1/</guid>
+      <description>Today I&amp;rsquo;m kick starting my 30 day React Article streak on this blog. We are going to start off Knowing What React is, and what makes it thick, setting up our project, and YES create our first React App at the end of this series.
+What is React? Simply put, React is a JavaScript library for building user interfaces. It is seen as the View layer for Web Applicaitons.
+React was Created at Facebook to facilitate the creation of interactive, stateful, and resusable UI components.</description>
+    </item>
+    
+  </channel>
+</rss>
