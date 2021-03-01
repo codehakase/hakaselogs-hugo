@@ -14,10 +14,10 @@
     
     <item>
       <title>Introduction to JavaScript Promises</title>
-      <link>https://hakaselogs.me/posts/2017-05-21-intro-to-javascript-promises/</link>
+      <link>https://hakaselogs.me/2017-05-21/introduction-to-javascript-promises/</link>
       <pubDate>Sun, 21 May 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://hakaselogs.me/posts/2017-05-21-intro-to-javascript-promises/</guid>
+      <guid>https://hakaselogs.me/2017-05-21/introduction-to-javascript-promises/</guid>
       <description>JavaScript promises have become a popular way to handle the tangled mess that JavaScript’s asynchronous nature often creates for us. Synchronous code is eaiser to follow and debug, async is better for flexibiity. Promises are becomming a big part of the JavaScript world, with awesome APIs implemented with it.
 What is a Promise? A Promise is a proxy for a value not necessarily known when the promise is created. It allows you to associate handlers with an asynchronous action&amp;rsquo;s eventual success value or failure reason.</description>
     </item>

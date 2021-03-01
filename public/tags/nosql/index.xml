@@ -14,10 +14,10 @@
     
     <item>
       <title>The CouchDB Replicator Database - An Overview</title>
-      <link>https://hakaselogs.me/posts/2018-04-19-couchdb-replicator-database/</link>
+      <link>https://hakaselogs.me/2018-04-19/the-couchdb-replicator-database-an-overview/</link>
       <pubDate>Thu, 19 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://hakaselogs.me/posts/2018-04-19-couchdb-replicator-database/</guid>
+      <guid>https://hakaselogs.me/2018-04-19/the-couchdb-replicator-database-an-overview/</guid>
       <description>TL;DR: In this article, I&amp;rsquo;ll give an overview of the replicator database in CouchDB, how to spin off a replication task in CouchDB
  CouchDB is a database that completely embraces the web. CouchDB stores your data as JSON documents, and allows you access these documents easily, from a web interface or its REST API. We won&amp;rsquo;t be going too deep into couchdb as it would be out of scope for this article - I&amp;rsquo;ll write one of those pretty soon.</description>
     </item>

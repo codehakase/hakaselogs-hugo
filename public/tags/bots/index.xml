@@ -14,10 +14,10 @@
     
     <item>
       <title>Making hakasebot - Twitter Bots 101</title>
-      <link>https://hakaselogs.me/posts/2017-05-30-making-hakasebot-bots-101/</link>
+      <link>https://hakaselogs.me/2017-05-30/making-hakasebot-twitter-bots-101/</link>
       <pubDate>Tue, 30 May 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://hakaselogs.me/posts/2017-05-30-making-hakasebot-bots-101/</guid>
+      <guid>https://hakaselogs.me/2017-05-30/making-hakasebot-twitter-bots-101/</guid>
       <description>![Bots]({{ site.url }}/images/twitter-bots.gif &amp;ldquo;Bots&amp;rdquo;)
 This was my first attempt making twitter bots. I made a very simple twitter bot for this blog, check the Source and also follow @_hakasebot.
 Setting Up The bot was created using the Twit package, which is a Twitter API client for Node.js. Twit needs to connect with my twitter account so first I created a new Twitter Application. After that, I took note of my application&amp;rsquo;s keys:</description>

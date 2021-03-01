@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>[#D2/30] React30: Lifecycle Methods and Data Fetching - hakaselogs</title><link rel="icon" type="image/png" href=/image/favicon.png /><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta itemprop="name" content="[#D2/30] React30: Lifecycle Methods and Data Fetching">
+<meta itemprop="description" content="Lifecycle methods in React">
+<meta itemprop="dateModified" content="2017-09-12T00:00:00+00:00" />
+<meta itemprop="wordCount" content="476">
+
+
+
+<meta itemprop="keywords" content="react,lifecycle methods,javascript," />
+<meta property="og:title" content="[#D2/30] React30: Lifecycle Methods and Data Fetching" />
+<meta property="og:description" content="Lifecycle methods in React" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hakaselogs.me/2017-09-12/#d2/30-react30-lifecycle-methods-and-data-fetching/" />
+<meta property="article:published_time" content="2017-09-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-09-12T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[#D2/30] React30: Lifecycle Methods and Data Fetching"/>
+<meta name="twitter:description" content="Lifecycle methods in React"/>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" media="screen" href="https://hakaselogs.me/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://hakaselogs.me/css/main.css" />
+
+        <link id="dark-scheme" rel="stylesheet" type="text/css" href="https://hakaselogs.me/css/dark.css" />
+
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+		<script src="https://hakaselogs.me/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper">
+		<div class="header">
+	
+		<div class="avatar">
+			<a href="https://hakaselogs.me/">
+				<img src="https://storage.googleapis.com/gopherizeme.appspot.com/gophers/0f1736136b4fcbea61798f9d4d04a6b01f4a05ad.png" alt="hakaselogs" />
+			</a>
+		</div>
+	
+	<h1 class="site-title"><a href="https://hakaselogs.me/">hakaselogs</a></h1>
+	<div class="site-description"><p>Notes mostly about software engineering and what I&rsquo;m working on.</p><nav class="nav social">
+			<ul class="flat"><li><a href="https://twitter.com/codehakase" title="Twitter"><i data-feather="twitter"></i></a></li><li><a href="https://github.com/codehakase" title="Github"><i data-feather="github"></i></a></li></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/posts">Archive</a>
+			</li>
+			
+			<li>
+				<a href="/tags">Tags</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post">
+			<div class="post-header">
+				
+					<div class="meta">
+						<div class="date">
+							<span class="day">12</span>
+							<span class="rest">Sep 2017</span>
+						</div>
+					</div>
+				
+				<div class="matter">
+					<h1 class="title">[#D2/30] React30: Lifecycle Methods and Data Fetching</h1>
+				</div>
+			</div>
+					
+			<div class="markdown">
+				<p>In the <a href="https://hakaselabs.github.io/2017-09-11/learning-react-day-1">previous article</a>, I wrote on setting up React, and some other basic features like Components, Props, and States. In this article, we&rsquo;re going to look at React&rsquo;s Lifecycle Methods and how to use them.</p>
+<p>When creating components, the only required spec is the <code>render</code> method. Sometimes we may want to add code that gets called at certain times inside our component&rsquo;s lifetime. The Lifecycle methods in React allows us write additional code for this.</p>
+<h2 id="lifecycle-methods">Lifecycle Methods</h2>
+<ul>
+<li><code>componentWillMount</code> - Invoked once, on both client and server before its been rendered.</li>
+<li><code>componentDidMount</code>  - Invoked once, only on the client, after a component is rendered.</li>
+<li><code>shouldComponentUpdate</code> - Determines whether a compoennt should update itself.</li>
+<li><code>componentWillUnmount</code> - Invoked when a component is unmounted.</li>
+</ul>
+<h3 id="componentdidmount">componentDidMount</h3>
+<p>In this article, we&rsquo;re going to add to our basic app from the previous article (<a href="https://github.com/codehakase/react30-source">GitHub repo</a>). We are going to make an API call to a Weather service.</p>
+<p>We&rsquo;re going to create a new Component <code>WeatherDisplay</code> and use it in the <code>App</code> component.</p>
+<p>In the <code>/src</code> directory, we create a new file <code>WeatherDisplay.js</code> with this content:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#00f">import</span> React, { Component } from <span style="color:#a31515">&#39;react&#39;</span>;
+
+<span style="color:#00f">class</span> WeatherDisplay <span style="color:#00f">extends</span> Component {
+  constructor() {
+    <span style="color:#00f">super</span>();
+    <span style="color:#00f">this</span>.state = {
+      weatherData: <span style="color:#00f">null</span>
+    }
+  }
+
+  componentDidMount() {
+    <span style="color:#00f">const</span> zipCode = <span style="color:#00f">this</span>.props.zipCode;
+    <span style="color:#00f">const</span> URL = <span style="color:#a31515">&#34;http://api.openweathermap.org/data/2.5/weather?q=&#34;</span> +
+      zipCode +
+      <span style="color:#a31515">&#34;&amp;appid=b1b35bba8b434a28a0be2a3e1071ae5b&amp;units=imperial&#34;</span>;
+     fetch(URL).then(res =&gt; res.json()).then(json =&gt; {
+      <span style="color:#00f">this</span>.setState({
+        weatherData: json
+      });
+     });
+  }
+
+  render() {
+    <span style="color:#00f">const</span> weatherData = <span style="color:#00f">this</span>.state.weatherData;
+    <span style="color:#00f">if</span> (!weatherData) <span style="color:#00f">return</span> &lt;div&gt;Loading&lt;<span style="">/div&gt;;</span>
+    <span style="color:#00f">const</span> weather = weatherData.weather[0];
+    <span style="color:#00f">const</span> icon = <span style="color:#a31515">&#34;http://openweathermap.org/img/w/&#34;</span> + weather.icon + <span style="color:#a31515">&#34;.png&#34;</span>;
+
+    <span style="color:#00f">return</span> (
+      &lt;div&gt;
+        &lt;h1&gt;
+          {weather.main} <span style="color:#00f">in</span> {weatherData.name}
+          &lt;img src={icon} alt={weatherData.description} /&gt;
+        &lt;<span style="">/h1&gt;</span>
+        &lt;p&gt;Current: {weatherData.main.temp}<span style="">°</span>&lt;<span style="">/p&gt;</span>
+        &lt;p&gt;High: {weatherData.main.temp_max}<span style="">°</span>&lt;<span style="">/p&gt;</span>
+        &lt;p&gt;Low: {weatherData.main.temp_min}<span style="">°</span>&lt;<span style="">/p&gt;</span>
+        &lt;p&gt;Wind Speed: {weatherData.wind.speed} mi/hr&lt;<span style="">/p&gt;</span>
+      &lt;<span style="">/div&gt;</span>
+    );
+  }
+}
+
+<span style="color:#00f">export</span> <span style="color:#00f">default</span> WeatherDisplay;
+</code></pre></div><p>And update <code>App.js</code> with this content:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#00f">import</span> React, { Component } from <span style="color:#a31515">&#39;react&#39;</span>;
+<span style="color:#00f">import</span> <span style="color:#a31515">&#39;./App.css&#39;</span>;
+<span style="color:#00f">import</span> WeatherDisplay from <span style="color:#a31515">&#39;./WeatherDisplay&#39;</span>;
+
+<span style="color:#00f">class</span> App <span style="color:#00f">extends</span> Component {
+  constructor() {
+    <span style="color:#00f">super</span>();
+    <span style="color:#00f">this</span>.state = {
+      activePlace: 0
+    };
+  }
+  render() {
+    <span style="color:#00f">const</span> places = [
+      {name: <span style="color:#a31515">&#34;Asokoro&#34;</span>, zipCode: <span style="color:#a31515">&#34;900231&#34;</span>},
+      {name: <span style="color:#a31515">&#34;Maitama&#34;</span>, zipCode: <span style="color:#a31515">&#34;900271&#34;</span>},
+      { name: <span style="color:#a31515">&#34;Santa Cruz&#34;</span>, zipCode: <span style="color:#a31515">&#34;95062&#34;</span> },
+      { name: <span style="color:#a31515">&#34;Honolulu&#34;</span>, zipCode: <span style="color:#a31515">&#34;96803&#34;</span> }
+    ];
+
+    <span style="color:#00f">const</span> activePlace = <span style="color:#00f">this</span>.state.activePlace;
+    <span style="color:#00f">return</span> (
+      &lt;div className=<span style="color:#a31515">&#34;App&#34;</span>&gt;
+        {
+          places.map((place, index) =&gt; (
+            &lt;button
+              key={index}
+              onClick={() =&gt; {<span style="color:#00f">this</span>.setState({
+                activePlace: index
+              });
+             }}
+             &gt;
+             {place.name}
+            &lt;<span style="">/button&gt;</span>
+          ))
+        }
+        &lt;WeatherDisplay
+          key={activePlace}
+          zipCode={places[activePlace].zipCode}
+          /&gt;
+      &lt;<span style="">/div&gt;</span>
+    );
+  }
+}
+
+<span style="color:#00f">export</span> <span style="color:#00f">default</span> App;
+</code></pre></div><p>At this point running your app on you should get something similar:</p>
+<p><img src="http://res.cloudinary.com/hakase-labs/image/upload/c_scale,w_1230/v1505241392/react30-basic-app_vghmhe.gif" alt="React basic app" title="Preview"></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="source">Source</h2>
+<p>The source for this series, can be found <a href="https://github.com/codehakase/react30-source">HERE</a>. You can clone the GitHub repo, and run locally, more instructions are on the README file.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>So far we&rsquo;ve seen some of the React Lifecycle hooks, and a sample app to explain further. When we talk about mounting, we&rsquo;re actually referring to the process of converting components into actual DOM elements. In the next article, we&rsquo;ll look at the other Lifecycle methods in-depth.</p>
+<h3 id="read-other-articles-in-the-series">Read other articles in the series</h3>
+<p>Day 1 - <a href="https://hakaselabs.github.io/2017-09-11/learning-react-day-1">Getting Started, the Basics</a></p>
+
+			</div>
+
+			<div class="tags">
+				
+					
+						<ul class="flat">
+							
+							<li><a href="/tags/react">react</a></li>
+							
+							<li><a href="/tags/lifecycle-methods">lifecycle methods</a></li>
+							
+							<li><a href="/tags/javascript">javascript</a></li>
+							
+						</ul>
+					
+				
+			</div></div>
+	</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div>2021  © hakaselogs |  <a href="https://github.com/knadh/hugo-ink">Ink</a> theme on <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-90124514-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script>feather.replace()</script>
+</body>
+</html>

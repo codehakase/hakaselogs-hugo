@@ -14,10 +14,10 @@
     
     <item>
       <title>for...in vs for...of Loops in JavaScript</title>
-      <link>https://hakaselogs.me/posts/2017-06-19-for-in-vs-for-of-loop-javascript/</link>
+      <link>https://hakaselogs.me/2017-06-19/for...in-vs-for...of-loops-in-javascript/</link>
       <pubDate>Mon, 19 Jun 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://hakaselogs.me/posts/2017-06-19-for-in-vs-for-of-loop-javascript/</guid>
+      <guid>https://hakaselogs.me/2017-06-19/for...in-vs-for...of-loops-in-javascript/</guid>
       <description>The for..in and for..of loops, gives us a clean and concise syntax to iterate on iterable items like arrays, strings, objects, and enumerables. Now the question is where to use which. Here&amp;rsquo;s a little reminder to get you you started.
 for..in Use this to iterate over the properties of an object:
 let person = { name: &amp;#39;Francis&amp;#39;, alias: &amp;#39;codehakase&amp;#39;, eyeColour: &amp;#39;brown&amp;#39; }; for(let key in person) { console.log( `${key}=&amp;gt; ${person[key]}` ); } // name =&amp;gt; Francis // alias =&amp;gt; codehakase .</description>

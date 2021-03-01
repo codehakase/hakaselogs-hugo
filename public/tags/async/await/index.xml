@@ -13,10 +13,10 @@
     
     <item>
       <title>JavaScript Async/Await 101</title>
-      <link>https://hakaselogs.me/posts/2017-08-02-show-me-async-await-like-am-5/</link>
+      <link>https://hakaselogs.me/2017-08-12/javascript-async/await-101/</link>
       <pubDate>Sat, 12 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://hakaselogs.me/posts/2017-08-02-show-me-async-await-like-am-5/</guid>
+      <guid>https://hakaselogs.me/2017-08-12/javascript-async/await-101/</guid>
       <description>Async and Await has been a blessing to most JavaScript Developers. Even while it was on the Stage 4 proposal for ES6, the feature has been warmtly welcomed.
 Node.js now Supports async/await since its version 7.6.
 What is async/await? If this is your first time seeing/hearing of this term, here&amp;rsquo;s it in plain English:

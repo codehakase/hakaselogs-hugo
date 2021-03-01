@@ -13,7 +13,7 @@
   </url>
   
   <url>
-    <loc>https://hakaselogs.me/posts/2020-02-07-vim-linenumbers/</loc>
+    <loc>https://hakaselogs.me/2020-02-07/line-numbers-in-vim/</loc>
     <lastmod>2020-02-07T00:00:00+00:00</lastmod>
   </url>
   
@@ -43,12 +43,12 @@
   </url>
   
   <url>
-    <loc>https://hakaselogs.me/posts/2020-01-10-what-i-use/</loc>
+    <loc>https://hakaselogs.me/2020-01-10/what-i-use/</loc>
     <lastmod>2020-01-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://hakaselogs.me/posts/2018-01-12-building-small-containers-for-kubernetes/</loc>
+    <loc>https://hakaselogs.me/2018-12-01/building-small-containers-for-kubernetes/</loc>
     <lastmod>2018-12-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -73,7 +73,7 @@
   </url>
   
   <url>
-    <loc>https://hakaselogs.me/posts/2018-04-20-building-a-web-app-with-go-gin-and-react/</loc>
+    <loc>https://hakaselogs.me/2018-04-20/building-a-web-app-with-go-gin-and-react/</loc>
     <lastmod>2018-04-20T00:00:00+00:00</lastmod>
   </url>
   
@@ -103,7 +103,7 @@
   </url>
   
   <url>
-    <loc>https://hakaselogs.me/posts/2018-04-19-couchdb-replicator-database/</loc>
+    <loc>https://hakaselogs.me/2018-04-19/the-couchdb-replicator-database-an-overview/</loc>
     <lastmod>2018-04-19T00:00:00+00:00</lastmod>
   </url>
   
@@ -113,7 +113,7 @@
   </url>
   
   <url>
-    <loc>https://hakaselogs.me/posts/2018-03-05-whats-new-in-golang-1-dot-10/</loc>
+    <loc>https://hakaselogs.me/2018-03-06/heres-whats-new-in-go-1.10/</loc>
     <lastmod>2018-03-06T00:00:00+00:00</lastmod>
   </url>
   
@@ -123,7 +123,7 @@
   </url>
   
   <url>
-    <loc>https://hakaselogs.me/posts/2017-12-05-react-native-vs-ionic/</loc>
+    <loc>https://hakaselogs.me/2017-12-05/react-native-vs-ionic-a-quick-comparison/</loc>
     <lastmod>2017-12-05T00:00:00+00:00</lastmod>
   </url>
   
@@ -133,7 +133,7 @@
   </url>
   
   <url>
-    <loc>https://hakaselogs.me/posts/2017-11-19-golang-tutorial-series-pt-2/</loc>
+    <loc>https://hakaselogs.me/2017-11-19/getting-started-with-go-variables-#x2197/</loc>
     <lastmod>2017-11-19T00:00:00+00:00</lastmod>
   </url>
   
@@ -148,17 +148,17 @@
   </url>
   
   <url>
-    <loc>https://hakaselogs.me/posts/2017-11-18-golang-tutorial-series-pt-1/</loc>
+    <loc>https://hakaselogs.me/2017-11-18/golang-getting-started-the-practical-dev-#x2197/</loc>
     <lastmod>2017-11-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://hakaselogs.me/posts/2017-10-28-terminal-for-beginers/</loc>
+    <loc>https://hakaselogs.me/2017-10-28/terminal-for-beginners/</loc>
     <lastmod>2017-10-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://hakaselogs.me/posts/2017-09-12-learning-react-day-2/</loc>
+    <loc>https://hakaselogs.me/2017-09-12/#d2/30-react30-lifecycle-methods-and-data-fetching/</loc>
     <lastmod>2017-09-12T00:00:00+00:00</lastmod>
   </url>
   
@@ -173,7 +173,7 @@
   </url>
   
   <url>
-    <loc>https://hakaselogs.me/posts/2017-09-11-learning-react-day-1/</loc>
+    <loc>https://hakaselogs.me/2017-09-11/#d1/30-react30-getting-started-basic-concepts/</loc>
     <lastmod>2017-09-11T00:00:00+00:00</lastmod>
   </url>
   
@@ -183,17 +183,17 @@
   </url>
   
   <url>
-    <loc>https://hakaselogs.me/posts/2017-09-02-how-i-got-started-with-golang/</loc>
+    <loc>https://hakaselogs.me/2017-09-02/how-i-learned-golang/</loc>
     <lastmod>2017-09-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://hakaselogs.me/posts/2017-08-02-show-me-async-await-like-am-5/</loc>
+    <loc>https://hakaselogs.me/2017-08-12/javascript-async/await-101/</loc>
     <lastmod>2017-08-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://hakaselogs.me/posts/2017-06-19-for-in-vs-for-of-loop-javascript/</loc>
+    <loc>https://hakaselogs.me/2017-06-19/for...in-vs-for...of-loops-in-javascript/</loc>
     <lastmod>2017-06-19T00:00:00+00:00</lastmod>
   </url>
   
@@ -208,7 +208,7 @@
   </url>
   
   <url>
-    <loc>https://hakaselogs.me/posts/2017-06-13-building-a-restful-api-nodejs/</loc>
+    <loc>https://hakaselogs.me/2017-06-13/build-your-first-restful-api-with-node.js/</loc>
     <lastmod>2017-06-13T00:00:00+00:00</lastmod>
   </url>
   
@@ -233,7 +233,7 @@
   </url>
   
   <url>
-    <loc>https://hakaselogs.me/posts/2017-05-30-making-hakasebot-bots-101/</loc>
+    <loc>https://hakaselogs.me/2017-05-30/making-hakasebot-twitter-bots-101/</loc>
     <lastmod>2017-05-30T00:00:00+00:00</lastmod>
   </url>
   
@@ -243,7 +243,7 @@
   </url>
   
   <url>
-    <loc>https://hakaselogs.me/posts/2017-05-25-javascript-objects-101/</loc>
+    <loc>https://hakaselogs.me/2017-05-25/javascript-objects-101/</loc>
     <lastmod>2017-05-25T00:00:00+00:00</lastmod>
   </url>
   
@@ -253,7 +253,7 @@
   </url>
   
   <url>
-    <loc>https://hakaselogs.me/posts/2017-05-21-intro-to-javascript-promises/</loc>
+    <loc>https://hakaselogs.me/2017-05-21/introduction-to-javascript-promises/</loc>
     <lastmod>2017-05-21T00:00:00+00:00</lastmod>
   </url>
   
@@ -263,7 +263,7 @@
   </url>
   
   <url>
-    <loc>https://hakaselogs.me/posts/2017-05-17-object-oriented-programming-in-php-the-easy-way/</loc>
+    <loc>https://hakaselogs.me/2017-05-17/object-oriented-php-an-easy-approach/</loc>
     <lastmod>2017-05-17T00:00:00+00:00</lastmod>
   </url>
   
@@ -283,7 +283,7 @@
   </url>
   
   <url>
-    <loc>https://hakaselogs.me/posts/2017-05-09-introducing-adonis-js/</loc>
+    <loc>https://hakaselogs.me/2017-05-09/introducing-adonis-js/</loc>
     <lastmod>2017-05-09T00:00:00+00:00</lastmod>
   </url>
   

@@ -14,10 +14,10 @@
     
     <item>
       <title>Introducing Adonis Js</title>
-      <link>https://hakaselogs.me/posts/2017-05-09-introducing-adonis-js/</link>
+      <link>https://hakaselogs.me/2017-05-09/introducing-adonis-js/</link>
       <pubDate>Tue, 09 May 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://hakaselogs.me/posts/2017-05-09-introducing-adonis-js/</guid>
+      <guid>https://hakaselogs.me/2017-05-09/introducing-adonis-js/</guid>
       <description>TL;DR AdonisJs is a true MVC Framework for Node.js. It encapsulate all the boring parts of Web programming and offers you a nice &amp;amp; clean API to work with. AdonisJs makes it easy to write web applications with less code. In this article, i will show you how to get started with AdonisJs. Checkout the repo on Github.
 Node.js is one of the emerging technologies to write real-time applications using one of your favorite web languages: Javascript.</description>
     </item>

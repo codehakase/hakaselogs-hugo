@@ -14,10 +14,10 @@
     
     <item>
       <title>Building Small Containers for Kubernetes</title>
-      <link>https://hakaselogs.me/posts/2018-01-12-building-small-containers-for-kubernetes/</link>
+      <link>https://hakaselogs.me/2018-12-01/building-small-containers-for-kubernetes/</link>
       <pubDate>Sat, 01 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://hakaselogs.me/posts/2018-01-12-building-small-containers-for-kubernetes/</guid>
+      <guid>https://hakaselogs.me/2018-12-01/building-small-containers-for-kubernetes/</guid>
       <description>The first step to deploying any app to Kubernetes, is to bundle the app in a container. There are several official, and community-backed container images for various languages and distros, and most of these containers can be really large, or sometimes contain overheads your app may never need/use.
 Thanks to Docker, you can easily create container images in a few steps; specify a base image, add your app-specific changes, and build your container.</description>
     </item>

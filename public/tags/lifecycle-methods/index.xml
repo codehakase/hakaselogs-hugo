@@ -14,10 +14,10 @@
     
     <item>
       <title>[#D2/30] React30: Lifecycle Methods and Data Fetching</title>
-      <link>https://hakaselogs.me/posts/2017-09-12-learning-react-day-2/</link>
+      <link>https://hakaselogs.me/2017-09-12/#d2/30-react30-lifecycle-methods-and-data-fetching/</link>
       <pubDate>Tue, 12 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://hakaselogs.me/posts/2017-09-12-learning-react-day-2/</guid>
+      <guid>https://hakaselogs.me/2017-09-12/#d2/30-react30-lifecycle-methods-and-data-fetching/</guid>
       <description>In the previous article, I wrote on setting up React, and some other basic features like Components, Props, and States. In this article, we&amp;rsquo;re going to look at React&amp;rsquo;s Lifecycle Methods and how to use them.
 When creating components, the only required spec is the render method. Sometimes we may want to add code that gets called at certain times inside our component&amp;rsquo;s lifetime. The Lifecycle methods in React allows us write additional code for this.</description>
     </item>
