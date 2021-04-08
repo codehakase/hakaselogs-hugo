@@ -1,53 +1,48 @@
 <!DOCTYPE html>
 <html>
-{{ partial "header.html" . }}
+  {{ partial "header.html" . }}
 
-<body>
-	<div class="container wrapper list">
-		{{ partial "head.html" . }}
+  <body>
+    <div class="container wrapper list">
+      {{ partial "head.html" . }}
 
-		{{ if isset .Data "Term" }}
-			<h2>{{ .Data.Term }}</h2>
-		{{ else }}
-		<h2 class="page-title">{{ .Name }}</h2>
-		{{ end }}
-		
-		{{ .Content }}
+      <section class="section is-fullheight">
+        {{ $type := .Type }}
+        {{ $.Scratch.Set "count" 1 }}
 
-		<ul class="posts flat">
-			{{- range .Data.Pages -}}
-			{{- if (in (.Site.Params.excludedTypes | default (slice "page")) .Type) -}}
-			{{- else -}}
-			<li class="post">
-				<div class="post-header">
-					<div class="meta">
-						<div class="date">
-							<span class="day">{{ dateFormat "02" .Date }}</span>
-							<span class="rest">{{ if $.Site.Data.month }}{{ index $.Site.Data.month (printf "%d" .Date.Month) }} {{ .Date.Year }}{{ else }}{{ dateFormat "Jan 2006" .Date }}{{ end }}</span>
-						</div>
-					</div>
-					<div class="matter">
-						<h4 class="title small">
-							<a href="{{ .RelPermalink }}">{{.Title}}{{ if .Draft }}<sup class="draft-label">DRAFT</sup>{{ end }}</a>
-						</h4>
-						<span class="description">
-							{{ if isset .Params "description" }}
-								{{ .Description }}
-							{{ else if gt (countrunes .RawContent) 120 }}
-								{{ slicestr .RawContent 0 120 }}...
-							{{ else }}
-								{{ .RawContent }}
-							{{ end }}
-						</span>
-					</div>
-				</div>
-			</li>
-			{{- end -}}
-			{{- end -}}
-		</ul>
-	</div>
+        {{ range (.Site.RegularPages.GroupByDate "2006") }}
+        {{ if and (gt .Key 1) (gt (where .Pages "Type" $type) 0) }}
 
-	{{ partial "footer.html" . }}
-</body>
+        {{ range (where .Pages "Type" $type) }}
+        {{ if (eq ($.Scratch.Get "count") 1) }}
+        {{ $.Scratch.Set "count" 0 }}
+        <h4>{{ .Date.Format "2006" }}</h4>
+        {{ end }}
+        {{ end }}
+
+        {{ $.Scratch.Set "count" 1 }}
+
+        <ul class="posts flat" style="line-height:2">
+          {{ range (where .Pages "Type" $type) }}
+          {{ if (ne .Params.hidden true) }}
+          <li>
+            <a class="is-block" href="{{ .RelPermalink }}"
+              style="text-decoration:none !important;">
+              <span style="text-transform:uppercase;color:#333;">
+                {{ .Date.Format "02 Jan" }}
+              </span>&emsp;{{ .Title }}
+            </a>
+          </li>
+          {{ end }}
+          {{ end }}
+        </ul>
+
+        {{ end }}
+        {{ end }}
+      </section>
+    </div>
+
+    {{ partial "footer.html" . }}
+  </body>
 
 </html>

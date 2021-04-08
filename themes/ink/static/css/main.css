@@ -14,7 +14,7 @@ a {
     word-break: break-word;
 }
     a:hover {
-        border-bottom: 2px solid #3700ff;
+        text-decoration: none;
     }
 
 html,button,input,select,textarea {
