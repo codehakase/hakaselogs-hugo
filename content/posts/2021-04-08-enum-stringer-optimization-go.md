@@ -3,7 +3,7 @@ layout: post
 title: "Enum Stringer Interface optimisation in Go"
 author: "@codehakase"
 description: "A tip on how to optimise enum stringer interface"
-modified: 2021-04-07
+modified: 2021-04-08
 tags: [golang, go]
 share: true
 category: [golang]

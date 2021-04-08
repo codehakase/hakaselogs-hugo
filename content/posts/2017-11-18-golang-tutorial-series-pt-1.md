@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Golang - Getting Started, The Practical Dev &#x2197;"
+title: "Golang - Getting Started, The Practical Dev"
 author: "@codehakase"
 description: "Getting started with Go"
 modified: 2017-11-18

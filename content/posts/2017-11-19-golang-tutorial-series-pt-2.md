@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Getting Started with Go - Variables &#x2197;"
+title: "Getting Started with Go - Variables"
 author: "@codehakase"
 description: "Learn about variables in Go"
 modified: 2017-11-19
