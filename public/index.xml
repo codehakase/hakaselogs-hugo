@@ -7,10 +7,31 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© hakaselogs</copyright>
-    <lastBuildDate>Fri, 07 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 08 Apr 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://hakaselogs.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Projects I&#39;ve Authored</title>
+      <link>https://hakaselogs.me/projects/</link>
+      <pubDate>Thu, 08 Apr 2021 10:52:01 +0100</pubDate>
+      
+      <guid>https://hakaselogs.me/projects/</guid>
+      <description>Below are some small open source software projects I’ve authored or helped develop. Enjoy!
+ Engage PHP SDK lets you capture user attributes and events on your site. Engage Go SDK is the Engage.so sdk written in Go. slack-logrus is an Intuitive Logrus Hook for Slack. Mobius Go SDK is an SDK for the Mobius DApp Store written in Go.  </description>
+    </item>
+    
+    <item>
+      <title>Enum Stringer Interface optimisation in Go</title>
+      <link>https://hakaselogs.me/2021-04-08/enum-stringer-interface-optimisation-in-go/</link>
+      <pubDate>Thu, 08 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://hakaselogs.me/2021-04-08/enum-stringer-interface-optimisation-in-go/</guid>
+      <description>The most idiomatic way of describing an enum type in Go is to use constants, often in conjunction with iota.
+A pattern I&amp;rsquo;ve used to implement the Stringer interface for an enum type is to lookup the string representation in a slice. Consider this snippet from a project I&amp;rsquo;m working on:
+// Status ... type Status uint32 // List of possible status values const ( // The operation is known, but hasn&amp;#39;t been decided yet 	Processing Status = iota // The operation will never be accepted 	Rejected // The operation was accepted 	Accepted .</description>
+    </item>
     
     <item>
       <title>Line Numbers In Vim</title>
@@ -82,21 +103,21 @@ New Features The Language Go 1.10 offers compiler tool chain and performance imp
     </item>
     
     <item>
-      <title>Getting Started with Go - Variables &amp;#x2197;</title>
-      <link>https://hakaselogs.me/2017-11-19/getting-started-with-go-variables-#x2197/</link>
+      <title>Getting Started with Go - Variables</title>
+      <link>https://hakaselogs.me/2017-11-19/getting-started-with-go-variables/</link>
       <pubDate>Sun, 19 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://hakaselogs.me/2017-11-19/getting-started-with-go-variables-#x2197/</guid>
+      <guid>https://hakaselogs.me/2017-11-19/getting-started-with-go-variables/</guid>
       <description>In the previous article - Golang - Getting Started on The Practical Dev, I wrote an intro to the Go programing language, and how to setup a development environment for your platform.
 In this part of the series, we&amp;rsquo;re going to talk about variables in Go, check it out HERE</description>
     </item>
     
     <item>
-      <title>Golang - Getting Started, The Practical Dev &amp;#x2197;</title>
-      <link>https://hakaselogs.me/2017-11-18/golang-getting-started-the-practical-dev-#x2197/</link>
+      <title>Golang - Getting Started, The Practical Dev</title>
+      <link>https://hakaselogs.me/2017-11-18/golang-getting-started-the-practical-dev/</link>
       <pubDate>Sat, 18 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://hakaselogs.me/2017-11-18/golang-getting-started-the-practical-dev-#x2197/</guid>
+      <guid>https://hakaselogs.me/2017-11-18/golang-getting-started-the-practical-dev/</guid>
       <description>“Go will be the server language of the future.” — Tobias Lütke, Shopify
  Go was first created as an experiment, the goal of its creators was to come up with a language that would resolve bad practices of others while keeping the good things.
 Its first release was on March 2012. Go was designed to feel familiar and to stay as simple as possible, the entire language specification fits in just a few pages.</description>
@@ -110,27 +131,6 @@ Its first release was on March 2012. Go was designed to feel familiar and to sta
       <guid>https://hakaselogs.me/2017-10-28/terminal-for-beginners/</guid>
       <description>Getting into Software Development seem overwhelming (actually it is) these days. One has to go through the hassle of getting familiar with different languages, to organizing codebases, to libraries, frameworks, the list goes on. Every Job description (at least the sane ones), requires additional skills to get the job. Example of such, Version Control (Git or Mecurial), tasks runners, build tools, package managers, etc.
 Most of these extra tools are being accessed/used from a command line interface.</description>
-    </item>
-    
-    <item>
-      <title>[#D2/30] React30: Lifecycle Methods and Data Fetching</title>
-      <link>https://hakaselogs.me/2017-09-12/#d2/30-react30-lifecycle-methods-and-data-fetching/</link>
-      <pubDate>Tue, 12 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://hakaselogs.me/2017-09-12/#d2/30-react30-lifecycle-methods-and-data-fetching/</guid>
-      <description>In the previous article, I wrote on setting up React, and some other basic features like Components, Props, and States. In this article, we&amp;rsquo;re going to look at React&amp;rsquo;s Lifecycle Methods and how to use them.
-When creating components, the only required spec is the render method. Sometimes we may want to add code that gets called at certain times inside our component&amp;rsquo;s lifetime. The Lifecycle methods in React allows us write additional code for this.</description>
-    </item>
-    
-    <item>
-      <title>[#D1/30] React30: Getting Started, Basic Concepts</title>
-      <link>https://hakaselogs.me/2017-09-11/#d1/30-react30-getting-started-basic-concepts/</link>
-      <pubDate>Mon, 11 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://hakaselogs.me/2017-09-11/#d1/30-react30-getting-started-basic-concepts/</guid>
-      <description>Today I&amp;rsquo;m kick starting my 30 day React Article streak on this blog. We are going to start off Knowing What React is, and what makes it thick, setting up our project, and YES create our first React App at the end of this series.
-What is React? Simply put, React is a JavaScript library for building user interfaces. It is seen as the View layer for Web Applicaitons.
-React was Created at Facebook to facilitate the creation of interactive, stateful, and resusable UI components.</description>
     </item>
     
     <item>

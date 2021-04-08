@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© hakaselogs</copyright>
-    <lastBuildDate>Sat, 01 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 08 Apr 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://hakaselogs.me/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Enum Stringer Interface optimisation in Go</title>
+      <link>https://hakaselogs.me/2021-04-08/enum-stringer-interface-optimisation-in-go/</link>
+      <pubDate>Thu, 08 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://hakaselogs.me/2021-04-08/enum-stringer-interface-optimisation-in-go/</guid>
+      <description>The most idiomatic way of describing an enum type in Go is to use constants, often in conjunction with iota.
+A pattern I&amp;rsquo;ve used to implement the Stringer interface for an enum type is to lookup the string representation in a slice. Consider this snippet from a project I&amp;rsquo;m working on:
+// Status ... type Status uint32 // List of possible status values const ( // The operation is known, but hasn&amp;#39;t been decided yet 	Processing Status = iota // The operation will never be accepted 	Rejected // The operation was accepted 	Accepted .</description>
+    </item>
     
     <item>
       <title>Building Small Containers for Kubernetes</title>
