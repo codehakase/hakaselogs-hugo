@@ -18,7 +18,7 @@ googleAnalytics = "UA-90124514-1"
 	# Content types to disable Disqus on.
 	disableDisqusTypes = ["page"]
 
-  favicon = "/image/favicon.png"
+  favicon = "/images/favicon.png"
 	featherIconsCDN = true
 
 # Nav.
