@@ -6,7 +6,7 @@
 	<meta itemprop="name" content="Working with JSON in Go">
 <meta itemprop="description" content="A guide to working with JSON in Go and some gotchas and surprises to take note of.">
 <meta itemprop="dateModified" content="2021-05-03T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1040">
+<meta itemprop="wordCount" content="1414">
 
 
 
@@ -94,7 +94,7 @@ data exchange/communication between applications. In this article, I&rsquo;ll gi
 the encoding/json package in Go, and point some gotchas I&rsquo;ve
 encountered.</p>
 </blockquote>
-<p><strong>Go to:</strong> <a href="#encoding">Encoding</a> | <a href="#decoding">Decoding</a> | <a href="#http-handler-example">HTTP Handler Example</a> | <a href="#read-and-write-json-to-file">Read and Write JSON to File</a> | <a href="#json-gotchas-in-go">Gotchas</a></p>
+<p><strong>Go to:</strong> <a href="#encoding">Encoding</a> | <a href="#decoding">Decoding</a> | <a href="#http-handler-example">HTTP Handler Example</a> | <a href="#read-and-write-json-to-file">Read and Write JSON to File</a> | <a href="#json-streaming">Streaming</a> | <a href="#json-gotchas-in-go">Gotchas</a></p>
 <p><a href="https://www.json.org">JSON</a> (JavaScript Object Notation), is a popular data interchange format commonly used for communication between applications.</p>
 <p>Working with JSON in Go is stress-free thanks to the <a href="https://golang.org/pkg/encoding/json">encoding/json</a> package from the standard library.</p>
 <h3 id="encoding-and-decoding-data">Encoding and decoding data</h3>
@@ -114,10 +114,10 @@ b, err := json.Marshal(c)
 fmt.Println(string(b), err)
 <span style="color:#008000">// output:
 </span><span style="color:#008000">// {&#34;BuildDirPath&#34;:&#34;/bin&#34;,&#34;MaxRefreshRate&#34;:0}
-</span></code></pre></div><p>By default, the <code>Marshal</code> function will include all <strong>zero-value</strong> exported fields as it treats the field names as the key of the JSON element.</p>
+</span></code></pre></div><p>By default, the <code>Marshal</code> function will include all <strong>zero-value</strong> exported fields as it treats the field names as the key of the JSON element. The code snippet above elaborates this &ndash; the <code>MaxRefreshRate</code> field had no value set but the JSON-encoded output included the field set to zero.</p>
 <h4 id="custom-json-keys">Custom JSON keys</h4>
 <p>From the previous code snippet, the JSON-encoded output uses the name of the
-struct fields. To control this we use the (struct tag)[https://golang.org/ref/spec#Tag] literal &ndash; here&rsquo;s an example:</p>
+struct fields. To control this we use the <a href="https://golang.org/ref/spec#Tag">struct tag</a> literal &ndash; here&rsquo;s an example:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#00f">type</span> Config <span style="color:#00f">struct</span> {
   BuildDirPath <span style="color:#2b91af">string</span> <span style="color:#a31515">`json:&#34;build_dir_path&#34;`</span>
   MaxRefreshRate <span style="color:#2b91af">string</span> <span style="color:#a31515">`json:&#34;max_refresh_rate&#34;`</span>
@@ -206,6 +206,87 @@ Here&rsquo;s an example of a HTTP POST request handler.</p>
   w.Write(res)
   <span style="color:#00f">return</span>
 }
+</code></pre></div><h3 id="json-streaming">JSON Streaming</h3>
+<p>The json package provides <code>NewEncoder</code> and <code>NewDecoder</code> functions to
+encode/decode JSON data from/to a stream. This is helpful if your data is coming from an <code>io.Reader</code> stream (eg. HTTP request body), or you need to decode multiple values from a stream of data.</p>
+<p><strong>Encoder</strong></p>
+<p>The <code>json.NewEncoder</code> function returns a new encoder that writes to a
+<code>io.Writer</code> stream:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#00f">func</span> NewEncoder(w io.Writer) *Encoder
+</code></pre></div><p>The <code>Encoder.Encode</code> function is responsible for writing JSON-encoded data to the
+stream. Each time the <code>Encode</code> function is called, JSON is marshalled from <code>v</code> and appended to the <code>io.Writer</code> with a trailing newline.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#00f">func</span> (enc *Encoder) Encode(v <span style="color:#00f">interface</span>{}) <span style="color:#2b91af">error</span>
+</code></pre></div><p>Here&rsquo;s an example of how to encode JSON data to a buffer:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#00f">func</span> main() {
+  buf := new(bytes.Buffer)
+  config := Config{
+    BuildDirPath: <span style="color:#a31515">&#34;/bin&#34;</span>,
+    MaxRefreshRate: 80,
+  }
+  err := json.NewEncoder(buf).Encode(u)
+  <span style="color:#00f">if</span> err != <span style="color:#00f">nil</span> {
+    log.Fatal(err)
+  }
+  fmt.Print(buf.String())
+  <span style="color:#008000">// output:
+</span><span style="color:#008000"></span>  {<span style="color:#a31515">&#34;build_dir_path&#34;</span>:<span style="color:#a31515">&#34;/bin&#34;</span>,<span style="color:#a31515">&#34;max_refresh_rate&#34;</span>:80}
+}
+</code></pre></div><p><strong>Decoder</strong></p>
+<p>The <code>json.NewDecoder</code> function returns a new decoder that reads from an
+<code>io.Reader</code>.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#00f">func</span> NewDecoder(r io.Reader) *Decoder
+</code></pre></div><p>The <code>Decoder.Decode</code> function decodes the JSON-encoded data. <code>Decode</code> reads the next JSON-encoded value from its input and stores it in the value pointed to by <code>v</code>.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#00f">func</span> (dec *Decoder) Decode(v <span style="color:#00f">interface</span>{}) <span style="color:#2b91af">error</span>
+</code></pre></div><p>Here&rsquo;s an example of how to decode JSON-data from a Stdin stream:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#00f">func</span> main() {
+	decoder := json.NewDecoder(os.Stdin)
+	output := make(<span style="color:#00f">map</span>[<span style="color:#2b91af">string</span>]<span style="color:#00f">interface</span>{})
+	<span style="color:#00f">for</span> {
+		err := decoder.Decode(&amp;output)
+		<span style="color:#00f">if</span> err != <span style="color:#00f">nil</span> {
+			log.Fatal(err)
+		} <span style="color:#00f">else</span> {
+			fmt.Println(<span style="color:#a31515">&#34;JSON output:&#34;</span>)
+			fmt.Println(output)
+			output = make(<span style="color:#00f">map</span>[<span style="color:#2b91af">string</span>]<span style="color:#00f">interface</span>{})
+		}
+	}
+}
+</code></pre></div><p>Running the above snippet and passing JSON to Stdin will print the decoded
+version:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># sample json gotten from: https://jsonapi.org/examples
+$ go run stream.go
+{
+  &#34;data&#34;: [{
+    &#34;type&#34;: &#34;articles&#34;,
+    &#34;id&#34;: &#34;1&#34;,
+    &#34;attributes&#34;: {
+      &#34;title&#34;: &#34;JSON:API paints my bikeshed!&#34;,
+      &#34;body&#34;: &#34;The shortest article. Ever.&#34;,
+      &#34;created&#34;: &#34;2015-05-22T14:56:29.000Z&#34;,
+      &#34;updated&#34;: &#34;2015-05-22T14:56:28.000Z&#34;
+    },
+    &#34;relationships&#34;: {
+      &#34;author&#34;: {
+        &#34;data&#34;: {&#34;id&#34;: &#34;42&#34;, &#34;type&#34;: &#34;people&#34;}
+      }
+    }
+  }],
+  &#34;included&#34;: [
+    {
+      &#34;type&#34;: &#34;people&#34;,
+      &#34;id&#34;: &#34;42&#34;,
+      &#34;attributes&#34;: {
+        &#34;name&#34;: &#34;John&#34;,
+        &#34;age&#34;: 80,
+        &#34;gender&#34;: &#34;male&#34;
+      }
+    }
+  ]
+}
+
+JSON out:
+map[data:[map[attributes:map[body:The shortest article. Ever. created:2015-05-22T14:56:29.000Z title:JSON:API paints my bikeshed! updated:2015-05-22T14:56:28.000Z] id:1 relationships:map[author:map[data:map[id:42 type:people]]] type:articles]] included:[map[attributes:map[age:80 gender:male name:John] id:42 type:people]]]
 </code></pre></div><h3 id="read-and-write-json-to-file">Read and Write JSON to file</h3>
 <p>I&rsquo;ve needed to read and write json to and from a file. This can come in handy
 when you have some sort of state stored in files you want to read and write to.
@@ -304,7 +385,8 @@ _ = json.Unmarshal([]byte(data), &amp;out)
 fmt.Printf(<span style="color:#a31515">&#34;%T&#34;</span>, out[<span style="color:#a31515">&#34;amount&#34;</span>]) <span style="color:#008000">// float64
 </span></code></pre></div><h3 id="wrapping-up">Wrapping Up</h3>
 <p>There’s much more to say about the json package and its various applications, but hopefully, this is a helpful introduction. To learn more, I highly recommend the package documentation found <a href="https://golang.org/pkg/encoding/json">HERE</a>.</p>
-<p>Let me know your thoughts or feedback, or send ideas for improvements.</p>
+<p>Let me know your thoughts or feedback, or send ideas for improvements. You can
+also go the discussions on <a href="https://twitter.com/codehakase/status/1389247089541005313">Twitter</a>, <a href="">Reddit</a>, and <a href="">Hacker News</a></p>
 <hr>
 
       </div>
